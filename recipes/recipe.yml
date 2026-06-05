@@ -7,7 +7,5 @@ image-version: stable
 
 modules:
   - type: rpm-ostree
-    repos:
-      - https://copr.fedorainfracloud.org/coprs/apuimedo/8821cu/repo/fedora-40/apuimedo-8821cu-fedora-40.repo
     install:
-      - akmod-rtl8821cu
+      - rtl8821cu-dkms
