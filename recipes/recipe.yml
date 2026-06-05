@@ -1,22 +1,14 @@
-# image name, used as <image name>:<version tag>
-# will be checked to the github container registry
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: bazzite-wifi
+description: Custom Bazzite image with injected Realtek 8821cu Wi-Fi drivers.
 
-# description of the image
-description: Custom Bazzite image with baked-in RTL8821CU WiFi drivers for MSI GTX 1650 laptop.
-
-# the base image to build on top of (Bazzite Nvidia for your hardware)
 base-image: ghcr.io/ublue-os/bazzite-nvidia
 image-version: stable
 
 modules:
-  - type: default-chroot
-
-  - type: copr
-    repo: apuimedo/8821cu
-
   - type: rpm-ostree
+    repos:
+      - https://copr.fedorainfracloud.org/coprs/apuimedo/8821cu/repo/fedora-%OS_VERSION%/apuimedo-8821cu-fedora-%OS_VERSION%.repo
     install:
-      - 8821cu
-
-  - type: signing
+      - rtl8821cu
+      - akmod-rtl8821cu
