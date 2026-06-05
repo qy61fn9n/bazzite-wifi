@@ -6,6 +6,7 @@ base-image: ghcr.io/ublue-os/bazzite-nvidia
 image-version: stable
 
 modules:
-  - type: rpm-ostree
+  - type: akmods
+    base: bazzite
     install:
-      - rtl8821cu-dkms
+      - rtl8821cu
